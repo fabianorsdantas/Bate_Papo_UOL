@@ -1,52 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <link
-      rel="icon"
-      type="image/icon"
-      href="https://seeklogo.com//images/U/uol-logo-68F369E089-seeklogo.com.png"/>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"/>
-
-    <link rel="stylesheet" href="reset.css"/>
-    <link rel="stylesheet" href="style.css"/>
-    <title>Bate-Papo UOL</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/icon-96x96.png">
+    <title>Bate-Papo Uol</title>
 </head>
+
 <body>
-  <div class="chat">
-    <div class="topo">
-        <img src = "img/logo-chat.png"/>
-        <ion-icon name="people"></ion-icon>
 
-    </div>
-    
-    <div class="tela_de_entrada">
-        <img class = "logo" src = "img/logo-login.png"/>
-        <div class="informacao_de_acesso">
-            <input class = "input_login_usuario" type="text" placeholder="Digite seu nome" data-identifier = "enter-name"/>
-            <button class = "entrar-no-batepapo" onclick="entrarNaSala()" data-identifier="start">Entrar</button>
+    <header>
+        <img src="img/logo-chat.png" alt="logo-chat">
+        <ion-icon onclick="exibirSidebar()" name="people"></ion-icon>
+    </header>
+
+   <aside class="tela-login">
+        <img class="logo" src="img/logo-login.png" alt="logo-login">
+        <div>
+            <input data-identifier="digitar-nome" type="text" placeholder="Digite seu nome">
+            <button data-identifier="iniciar" onclick="autenticarUsuario()">Entrar</button>
+        </div>    
+    </aside>
+
+    <main></main>
+
+    <aside class="usuarios-online none">
+
+        <h3>Escolha um contato para enviar mensagem:</h3>
+
+        <section class="usuarios"></section>
+
+        <section class="visibilidade">
+
+            <h3>Escolha a visibilidade</h3>
+
+            <li data-identifier="visualizar" onclick="escolherVisibilidade(this)">
+                <ion-icon name="lock-open"></ion-icon>
+                <p>Público</p>
+                <ion-icon class=" icone" name="checkmark-outline"></ion-icon>
+            </li>
+
+            <li data-identifier="visualizar" onclick="escolherVisibilidade(this)">
+                <ion-icon name="lock-closed"></ion-icon>
+                <p>Reservadamente</p>
+                <ion-icon class="none icone" name="checkmark-outline"></ion-icon>
+            </li>
+
+        </section>
+
+    </aside>    
+
+    <footer>
+        <div class="container">
+            <input class="enviar-msg" type="text" placeholder="Escreva aqui ...">
+            <p class="msg-visibilidade"></p>
         </div>
-        <div class="entrando escondido"></div>
-    </div>
-    
-    <div class="texto">
-        <input class="input__mensagem" type="text" placeholder="Escreva aqui..."/>
+        <ion-icon data-identifier="enviar-mensagem" onclick="enviarParaServidor()" name="paper-plane-outline"></ion-icon>
+    </footer>
 
-        <button class="enviar-mensagem" onclick="enviaMensagem()" data-identifier="send-message">
-            <ion-icon name="paper-plane-outline"></ion-icon>
-        </button>    
-    </div>
-</div>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
+
 </html>
