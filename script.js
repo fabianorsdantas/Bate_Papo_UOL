@@ -2,14 +2,14 @@ let usuario = { name: '' };
 let destinatario = "Todos";
 let mensagemArray = [];
 let usuariosOnline = [];
-let visibilidadeDaMensagem = "message";
+let statusDaMensagem = "message";
 let tipoDeVisibilidade;
 let destacarMensagem;
 let ultimaMensagem = { time: 0 };
 let formaDeExibicao = "publicamente";
 let intervaloEntreMensagens;
 
-enviarMsgTeclaEnter();
+enviarMensagem();
 
 function autenticarUsuario() {
     usuario = {
@@ -86,7 +86,7 @@ function enviarParaServidor() {
         from: usuario.name,
         to: destinatario,
         text: document.querySelector(".enviar-msg").value,
-        type: visibilidadeDaMensagem
+        type: statusDaMensagem
     };
     let promessaMensagemEnviada = axios.post('https://mock-api.driven.com.br/api/v4/uol/messages', mensagemAEnviar);
     promessaMensagemEnviada.then(envioAutomatico);
@@ -156,12 +156,12 @@ function escolherVisibilidade(elemento) {
     tipoDeVisibilidade = elemento.querySelector("p").innerHTML;
     if (tipoDeVisibilidade === "Reservadamente") {
         formaDeExibicao = 'reservadamente';
-        visibilidadeDaMensagem = 'private_message';
+        statusDaMensagem = 'private_message';
         document.querySelector(".msg-visibilidade").innerText =
             `Enviando para ${destinatario} (${formaDeExibicao})`;
     } else {
         formaDeExibicao = "publicamente";
-        visibilidadeDaMensagem = 'message';
+        statusDaMensagem = 'message';
         document.querySelector(".msg-visibilidade").innerText = `Enviando para ${destinatario} (${formaDeExibicao})`;
     }
 }
@@ -171,7 +171,7 @@ function atualizarReservada() {
         `Enviando para ${destinatario} (${formaDeExibicao})`;
 }
 
-function enviarMsgTeclaEnter() {
+function enviarMensagem() {
     window.addEventListener('keyup', event => {
 
         if (event.code === 'NumpadEnter' || event.code === 'Enter') {
