@@ -18,7 +18,7 @@ function autenticarUsuario() {
 
     let promessaEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants/394979f7-fbf7-4efc-9384-13b09a973482', usuario);
     promessaEnviada.catch(verificarErro);
-    promessaEnviada.then(liberarAcesso);
+    promessaEnviada.then(entrarNoChat);
 }
 
 function verificarErro(erro) {
@@ -27,29 +27,29 @@ function verificarErro(erro) {
     }
 }
 
-function liberarAcesso() {
+function entrarNoChat() {
     document.querySelector("aside").classList.add("none");
     document.querySelector("body").classList.remove("overflow");
 
-    setInterval(manterOnline, 5000);
-    setInterval(pegarUsuariosOnline, 10000);
-    intervaloEntreMensagens = setInterval(pegarMensagensDoServidor, 3000);
+    setInterval(permanecerOnline, 5000);
+    setInterval(usuariosConectados, 10000);
+    intervaloEntreMensagens = setInterval(baixarMensagens, 3000);
 
-    pegarUsuariosOnline();
+    usuariosConectados();
     atualizarReservada();
 }
 
-function manterOnline() {
+function permanecerOnline() {
     axios.post('https://mock-api.driven.com.br/api/v6/uol/status/394979f7-fbf7-4efc-9384-13b09a973482', usuario)
 }
 
 function envioAutomatico(){
     clearInterval(intervaloEntreMensagens);
-    pegarMensagensDoServidor();
-    intervaloEntreMensagens = setInterval(pegarMensagensDoServidor, 3000);
+    baixarMensagens();
+    intervaloEntreMensagens = setInterval(baixarMensagens, 3000);
 }
 
-function pegarMensagensDoServidor() {
+function baixarMensagens() {
     let promessaMensagens = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages/394979f7-fbf7-4efc-9384-13b09a973482');
     promessaMensagens.then(imprimirMensagensNaTela);
 }
@@ -110,7 +110,7 @@ function exibirSidebar() {
     document.querySelector(".fundo-escuro").setAttribute("onclick", "fecharBarraLateral();");
 }
 
-function pegarUsuariosOnline() {
+function usuariosConectados() {
     let promessaUsuariosOnline = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants/394979f7-fbf7-4efc-9384-13b09a973482');
     promessaUsuariosOnline.then(mostrarUsuariosOnline)
 }
