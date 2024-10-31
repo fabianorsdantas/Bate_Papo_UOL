@@ -16,7 +16,7 @@ function autenticarUsuario() {
         name: document.querySelector("aside input").value
     };
 
-    let promessaEnviada = axios.post('https://mock-api.driven.com.br/api/v4/uol/participants', usuario);
+    let promessaEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants/394979f7-fbf7-4efc-9384-13b09a973482', usuario);
     promessaEnviada.catch(checarErro);
     promessaEnviada.then(liberarAcesso);
 }
@@ -40,7 +40,7 @@ function liberarAcesso() {
 }
 
 function manterOnline() {
-    axios.post('https://mock-api.driven.com.br/api/v4/uol/status', usuario)
+    axios.post('https://mock-api.driven.com.br/api/v6/uol/status/394979f7-fbf7-4efc-9384-13b09a973482', usuario)
 }
 
 function envioAutomatico(){
@@ -50,7 +50,7 @@ function envioAutomatico(){
 }
 
 function pegarMensagensDoServidor() {
-    let promessaMensagens = axios.get('https://mock-api.driven.com.br/api/v4/uol/messages');
+    let promessaMensagens = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages/394979f7-fbf7-4efc-9384-13b09a973482');
     promessaMensagens.then(imprimirMensagensNaTela);
 }
 
@@ -88,7 +88,7 @@ function enviarParaServidor() {
         text: document.querySelector(".enviar-msg").value,
         type: statusDaMensagem
     };
-    let promessaMensagemEnviada = axios.post('https://mock-api.driven.com.br/api/v4/uol/messages', mensagemAEnviar);
+    let promessaMensagemEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages/394979f7-fbf7-4efc-9384-13b09a973482', mensagemAEnviar);
     promessaMensagemEnviada.then(envioAutomatico);
     promessaMensagemEnviada.catch(recarregarPaginaAoDesconectar);
     document.querySelector(".enviar-msg").value = "";
@@ -111,7 +111,7 @@ function exibirSidebar() {
 }
 
 function pegarUsuariosOnline() {
-    let promessaUsuariosOnline = axios.get('https://mock-api.driven.com.br/api/v4/uol/participants');
+    let promessaUsuariosOnline = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants/394979f7-fbf7-4efc-9384-13b09a973482');
     promessaUsuariosOnline.then(mostrarUsuariosOnline)
 }
 
