@@ -17,13 +17,13 @@ function autenticarUsuario() {
     };
 
     let promessaEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants/394979f7-fbf7-4efc-9384-13b09a973482', usuario);
-    promessaEnviada.catch(checarErro);
+    promessaEnviada.catch(verificarErro);
     promessaEnviada.then(liberarAcesso);
 }
 
-function checarErro(erro) {
+function verificarErro(erro) {
     if (erro.response.status === 400) {
-        alert("Esse nome já esta sendo utilizado, escolha outro por favor.")
+        alert("Esse nome não está disponível, escolha outro por favor.")
     }
 }
 
