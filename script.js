@@ -43,7 +43,7 @@ function usuarioConectado() {
     axios.post('https://mock-api.driven.com.br/api/v6/uol/status/394979f7-fbf7-4efc-9384-13b09a973482', usuario)
 }
 
-function envioAutomatico(){
+function atualizarMensagem(){
     clearInterval(intervaloEntreMensagens);
     baixarMensagens();
     intervaloEntreMensagens = setInterval(baixarMensagens, 3000);
@@ -51,10 +51,10 @@ function envioAutomatico(){
 
 function baixarMensagens() {
     let promessaMensagens = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages/394979f7-fbf7-4efc-9384-13b09a973482');
-    promessaMensagens.then(imprimirMensagensNaTela);
+    promessaMensagens.then(exibirMensagens);
 }
 
-function imprimirMensagensNaTela(mensagem) {
+function exibirMensagens(mensagem) {
     mensagemArray = mensagem.data;
     document.querySelector('main').innerHTML = '';
 
@@ -89,7 +89,7 @@ function enviarParaServidor() {
         type: statusDaMensagem
     };
     let promessaMensagemEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages/394979f7-fbf7-4efc-9384-13b09a973482', mensagemAEnviar);
-    promessaMensagemEnviada.then(envioAutomatico);
+    promessaMensagemEnviada.then(atualizarMensagem);
     promessaMensagemEnviada.catch(recarregarPaginaAoDesconectar);
     document.querySelector(".enviar-msg").value = "";
 }
