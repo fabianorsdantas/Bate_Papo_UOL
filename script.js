@@ -64,7 +64,7 @@ function exibirMensagens(mensagem) {
             <p data-identifier="message"><em>${element.time}</em>  <strong>${element.from}</strong> para <strong>${element.to}</strong>:  ${element.text}</p>
             </article>`);
 
-            seMensagemNovaScrollarChat();
+            scrollarChat();
         }
 
 
@@ -72,7 +72,7 @@ function exibirMensagens(mensagem) {
     ultimaMensagem = mensagemArray[mensagemArray.length - 1];
 }
 
-function seMensagemNovaScrollarChat() {
+function scrollarChat() {
     if (mensagemArray[mensagemArray.length - 1].time !== ultimaMensagem.time) {
 
         destacarMensagem = document.querySelector('main').lastChild;
