@@ -31,15 +31,15 @@ function entrarNoChat() {
     document.querySelector("aside").classList.add("none");
     document.querySelector("body").classList.remove("overflow");
 
-    setInterval(permanecerOnline, 5000);
+    setInterval(usuarioConectado, 5000);
     setInterval(usuariosConectados, 10000);
     intervaloEntreMensagens = setInterval(baixarMensagens, 3000);
 
     usuariosConectados();
-    atualizarReservada();
+    carregarMensagemReservada();
 }
 
-function permanecerOnline() {
+function usuarioConectado() {
     axios.post('https://mock-api.driven.com.br/api/v6/uol/status/394979f7-fbf7-4efc-9384-13b09a973482', usuario)
 }
 
@@ -139,7 +139,7 @@ function selecionarDestinatario(elemento) {
     elemento.querySelector(".icone").classList.remove("none");
     destinatario = elemento.querySelector("p").innerHTML;
 
-    atualizarReservada();
+    carregarMensagemReservada();
 }
 
 function deselecionar(elemento) {
@@ -166,7 +166,7 @@ function escolherVisibilidade(elemento) {
     }
 }
 
-function atualizarReservada() {
+function carregarMensagemReservada() {
     document.querySelector(".msg-visibilidade").innerText =
         `Enviando para ${destinatario} (${formaDeExibicao})`;
 }
