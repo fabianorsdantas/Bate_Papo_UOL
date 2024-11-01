@@ -90,11 +90,11 @@ function enviarParaServidor() {
     };
     let promessaMensagemEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages/394979f7-fbf7-4efc-9384-13b09a973482', mensagemAEnviar);
     promessaMensagemEnviada.then(atualizarMensagem);
-    promessaMensagemEnviada.catch(recarregarPaginaAoDesconectar);
+    promessaMensagemEnviada.catch(reiniciarPagina);
     document.querySelector(".enviar-msg").value = "";
 }
 
-function recarregarPaginaAoDesconectar() {
+function reiniciarPagina() {
     window.location.reload();
 }
 
