@@ -2,9 +2,9 @@
   <img src="https://github.com/fabianorsdantas/Bate_Papo_UOL/blob/main/img/logo.png" alt="Logo do Projeto" height="80px"/>
 </p>
 
-# <p align = "center">Bate-Papo UOL</p>
+# <p align ="center">Bate-Papo UOL</p>
 
-### <p align = "center">Tecnologias utilizadas:</p>
+### <p align ="center">Tecnologias utilizadas:</p>
 
 <p align = "center">
    <img align="center" alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" height="30px">
@@ -15,22 +15,20 @@
 
 ## 📖 Descrição
 Nesse projeto fizemos um aplicativo de bate-papo similar ao saudoso Bate-Papo UOL. Foram utilizadas as seguintes tecnologias: HTML, CSS, JavaScript e requisições axios.
-Breve descrição do projeto, seu objetivo e valor. Explicite o problema que resolve e seu propósito.
+Esse tipo de aplicação possibilita que pessoas de todos os lugares se encontrem, se conectem e construam amizades e relacionamentos significativos.
+Para fazer uso do aplicativo o usuário deverá fazer login (informando um nome de usuário) e na próxima tela que se abre escolher se deseja enviar mensagens para particulares ou para todos (pública).
 
 ## 📋 Pré-requisitos
-Liste os pré-requisitos necessários para rodar o projeto. Exemplo:
-- Node.js
-- Git
-- Outras dependências ou softwares necessários.
+Para desenvolver esse projeto foi preciso lançar mãos de uma API (Interface de Programação de Aplicações), a qual possibilita fazer requisições de envio e recebimento de mensagens em tempo real.
 
 ## 🚀 Instalação
-```bash
-# Clone o repositório
-git clone https://github.com/usuario/nome-do-repositorio.git
+Baixe o repositório do projeto no github e execute em sua máquina.
 
-# Navegue até o diretório do projeto
-cd nome-do-repositorio
+## 💻 Prévia
+<div style="display: flex; flex-wrap: wrap; justify-content: center;" >
 
-# Instale as dependências
-npm install
+<img src="./img/tela_login.png" style="margin: 10px">
+<img src="./img/chat.png" style="margin: 10px">
+
+</div>
 
