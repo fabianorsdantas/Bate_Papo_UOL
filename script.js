@@ -16,14 +16,14 @@ function autenticarUsuario() {
         name: document.querySelector("aside input").value
     };
 
-    let promessaEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants/394979f7-fbf7-4efc-9384-13b09a973482', usuario);
+    let promessaEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants/83c66857-f7a1-43e7-a19e-e85055df6f58', usuario);
     promessaEnviada.catch(verificarErro);
     promessaEnviada.then(entrarNoChat);
 }
 
 function verificarErro(erro) {
     if (erro.response.status === 400) {
-        alert("Esse nome não está disponível, escolha outro por favor.")
+        alert("Esse nome já esta sendo utilizado, escolha outro por favor.")
     }
 }
 
@@ -36,11 +36,11 @@ function entrarNoChat() {
     intervaloEntreMensagens = setInterval(baixarMensagens, 3000);
 
     usuariosConectados();
-    carregarMensagemReservada();
+    baixarMensagemReservada();
 }
 
 function usuarioConectado() {
-    axios.post('https://mock-api.driven.com.br/api/v6/uol/status/394979f7-fbf7-4efc-9384-13b09a973482', usuario)
+    axios.post('https://mock-api.driven.com.br/api/v6/uol/status/83c66857-f7a1-43e7-a19e-e85055df6f58', usuario)
 }
 
 function atualizarMensagem(){
@@ -50,7 +50,7 @@ function atualizarMensagem(){
 }
 
 function baixarMensagens() {
-    let promessaMensagens = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages/394979f7-fbf7-4efc-9384-13b09a973482');
+    let promessaMensagens = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages/83c66857-f7a1-43e7-a19e-e85055df6f58');
     promessaMensagens.then(exibirMensagens);
 }
 
@@ -64,7 +64,7 @@ function exibirMensagens(mensagem) {
             <p data-identifier="message"><em>${element.time}</em>  <strong>${element.from}</strong> para <strong>${element.to}</strong>:  ${element.text}</p>
             </article>`);
 
-            scrollarChat();
+             scrollarChat();
         }
 
 
@@ -72,7 +72,7 @@ function exibirMensagens(mensagem) {
     ultimaMensagem = mensagemArray[mensagemArray.length - 1];
 }
 
-function scrollarChat() {
+function  scrollarChat() {
     if (mensagemArray[mensagemArray.length - 1].time !== ultimaMensagem.time) {
 
         destacarMensagem = document.querySelector('main').lastChild;
@@ -81,14 +81,14 @@ function scrollarChat() {
     }
 }
 
-function enviarParaServidor() {
+function carregarNoServidor() {
     let mensagemAEnviar = {
         from: usuario.name,
         to: destinatario,
         text: document.querySelector(".enviar-msg").value,
-        type: statusDaMensagem
+        type:  statusDaMensagem
     };
-    let promessaMensagemEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages/394979f7-fbf7-4efc-9384-13b09a973482', mensagemAEnviar);
+    let promessaMensagemEnviada = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages/83c66857-f7a1-43e7-a19e-e85055df6f58', mensagemAEnviar);
     promessaMensagemEnviada.then(atualizarMensagem);
     promessaMensagemEnviada.catch(reiniciarPagina);
     document.querySelector(".enviar-msg").value = "";
@@ -98,7 +98,7 @@ function reiniciarPagina() {
     window.location.reload();
 }
 
-function fecharBarraLateral() {
+function ocultarSidebar() {
     document.querySelector(".fundo-escuro").removeAttribute("onclick");
     document.querySelector(".usuarios-online").classList.add("none");
     document.querySelector(".fundo-escuro").classList.add("none");
@@ -107,18 +107,18 @@ function fecharBarraLateral() {
 function exibirSidebar() {
     document.querySelector(".usuarios-online").classList.remove("none");
     document.querySelector(".fundo-escuro").classList.remove("none");
-    document.querySelector(".fundo-escuro").setAttribute("onclick", "fecharBarraLateral();");
+    document.querySelector(".fundo-escuro").setAttribute("onclick", "ocultarSidebar();");
 }
 
 function usuariosConectados() {
-    let promessaUsuariosOnline = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants/394979f7-fbf7-4efc-9384-13b09a973482');
-    promessaUsuariosOnline.then(mostrarUsuariosOnline)
+    let promessaUsuariosOnline = axios.get('https://mock-api.driven.com.br/api/v6/uol/participants/83c66857-f7a1-43e7-a19e-e85055df6f58');
+    promessaUsuariosOnline.then(exibirConectados)
 }
 
-function mostrarUsuariosOnline(usuarios) {
+function exibirConectados(usuarios) {
     usuariosOnline = usuarios.data;
     document.querySelector('.usuarios').innerHTML = `
-    <li data-identifier="participant" onclick="selecionarDestinatario(this)">
+    <li data-identifier="participant" onclick="escolherDestinatario(this)">
         <ion-icon name="people"></ion-icon>
         <p>Todos</p>
         <ion-icon class="none icone" name="checkmark-outline"></ion-icon>
@@ -126,7 +126,7 @@ function mostrarUsuariosOnline(usuarios) {
     usuariosOnline.forEach((element) => {
 
         document.querySelector('.usuarios').innerHTML += `
-            <li data-identifier="participant" onclick="selecionarDestinatario(this)">
+            <li data-identifier="participant" onclick="escolherDestinatario(this)">
                 <ion-icon name="person-circle"></ion-icon>
                 <p>${element.name}</p>
                 <ion-icon class="none icone" name="checkmark-outline"></ion-icon>
@@ -134,15 +134,15 @@ function mostrarUsuariosOnline(usuarios) {
     })
 }
 
-function selecionarDestinatario(elemento) {
-    deselecionar(elemento.parentNode);
+function escolherDestinatario(elemento) {
+    retirarSelecao(elemento.parentNode);
     elemento.querySelector(".icone").classList.remove("none");
     destinatario = elemento.querySelector("p").innerHTML;
 
-    carregarMensagemReservada();
+    baixarMensagemReservada();
 }
 
-function deselecionar(elemento) {
+function retirarSelecao(elemento) {
     const selec = elemento.querySelector(`.icone:not(.none)`);
     if (selec !== null) {
         selec.classList.add("none");
@@ -150,23 +150,23 @@ function deselecionar(elemento) {
 }
 
 function escolherVisibilidade(elemento) {
-    deselecionar(elemento.parentNode);
+    retirarSelecao(elemento.parentNode);
     elemento.querySelector(".icone").classList.remove("none");
 
     tipoDeVisibilidade = elemento.querySelector("p").innerHTML;
     if (tipoDeVisibilidade === "Reservadamente") {
         formaDeExibicao = 'reservadamente';
-        statusDaMensagem = 'private_message';
+         statusDaMensagem = 'private_message';
         document.querySelector(".msg-visibilidade").innerText =
             `Enviando para ${destinatario} (${formaDeExibicao})`;
     } else {
         formaDeExibicao = "publicamente";
-        statusDaMensagem = 'message';
+         statusDaMensagem = 'message';
         document.querySelector(".msg-visibilidade").innerText = `Enviando para ${destinatario} (${formaDeExibicao})`;
     }
 }
 
-function carregarMensagemReservada() {
+function baixarMensagemReservada() {
     document.querySelector(".msg-visibilidade").innerText =
         `Enviando para ${destinatario} (${formaDeExibicao})`;
 }
@@ -176,7 +176,7 @@ function enviarMensagem() {
 
         if (event.code === 'NumpadEnter' || event.code === 'Enter') {
             if (document.querySelector(".enviar-msg").value !== '') {
-                enviarParaServidor();
+                carregarNoServidor();
             } else if (document.querySelector(".tela-login input").value !== '') {
                 autenticarUsuario();
             }
