@@ -1,7 +1,17 @@
-<h1 align="center">Bate-Papo UOL</h1>
-
 <p align="center">
-  <img src="https://github.com/fabianorsdantas/Bate_Papo_UOL/blob/main/img/logo.png" alt="Logo do Projeto" width="200"/>
+  <img src="https://github.com/fabianorsdantas/Bate_Papo_UOL/blob/main/img/logo.png" alt="Logo do Projeto" height="80px"/>
+</p>
+
+# <p align = "center">Bate-Papo UOL</p>
+
+### <p align = "center">tecnologias utilizadas:</p>
+
+<p align = "center">
+   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" heigth="30px"/>
+   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" height="30px"/>
+   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" height="30px"/>
+   <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" heigth="30px"/>
+   <img align="center" src="https://img.shields.io/static/v1?style=for-the-badge&message=Axios&color=5A29E4&logo=Axios&logoColor=FFFFFF&label="/>
 </p>
 
 ## 📖 Descrição
