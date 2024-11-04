@@ -9,44 +9,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="96x96" href="img/icon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/icon-96x96.png">
     <title>Bate-Papo Uol</title>
 </head>
 
 <body>
 
     <header>
-        <img src="img/logo-chat.png" alt="logo-chat">
+        <img src="img/logo-chat.png" alt="Logo bate-papo UOL">
         <ion-icon onclick="exibirSidebar()" name="people"></ion-icon>
     </header>
 
    <aside class="tela-login">
-        <img class="logo" src="img/logo-login.png" alt="logo-login">
-        <div>
-            <input data-identifier="digitar-nome" type="text" placeholder="Digite seu nome">
-            <button data-identifier="iniciar" onclick="autenticarUsuario()">Entrar</button>
-        </div>    
+
+        <img class="logo" src="img/logo-login.png" alt="Logo bate-papo UOL">
+        <div class="logar">
+            <input class="login-name" data-identifier="enter-name" type="text" placeholder="     Digite seu nome   ">
+            <button data-identifier="start" onclick="autenticarUsuario()">Entrar</button>
+        </div>
+        
+
     </aside>
 
-    <main></main>
+    <main>
+    </main>
 
     <aside class="usuarios-online none">
 
         <h3>Escolha um contato para enviar mensagem:</h3>
 
-        <section class="usuarios"></section>
+        <section class="usuarios">
+        </section>
 
         <section class="visibilidade">
 
             <h3>Escolha a visibilidade</h3>
 
-            <li data-identifier="visualizar" onclick="escolherVisibilidade(this)">
+            <li data-identifier="visibility" onclick="escolherVisibilidade(this)">
                 <ion-icon name="lock-open"></ion-icon>
                 <p>Público</p>
                 <ion-icon class=" icone" name="checkmark-outline"></ion-icon>
             </li>
 
-            <li data-identifier="visualizar" onclick="escolherVisibilidade(this)">
+            <li data-identifier="visibility" onclick="escolherVisibilidade(this)">
                 <ion-icon name="lock-closed"></ion-icon>
                 <p>Reservadamente</p>
                 <ion-icon class="none icone" name="checkmark-outline"></ion-icon>
@@ -54,19 +59,21 @@
 
         </section>
 
-    </aside>    
+    </aside>
+
+    <div class="fundo-escuro none"></div>
 
     <footer>
         <div class="container">
             <input class="enviar-msg" type="text" placeholder="Escreva aqui ...">
             <p class="msg-visibilidade"></p>
         </div>
-        <ion-icon data-identifier="enviar-mensagem" onclick="enviarParaServidor()" name="paper-plane-outline"></ion-icon>
+        <ion-icon data-identifier="send-message" onclick="enviarParaServidor()" name="paper-plane-outline"></ion-icon>
     </footer>
-
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+   
 </body>
 
 </html>
