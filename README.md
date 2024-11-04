@@ -1,6 +1,8 @@
-# Bate-Papo UOL
+<h1 align="center">Bate-Papo UOL</h1>
 
-![Logo do Projeto](https://github.com/fabianorsdantas/Bate_Papo_UOL/blob/main/img/logo.png)
+<p align="center">
+  <img src="https://github.com/fabianorsdantas/Bate_Papo_UOL/blob/main/img/logo.png" alt="Logo do Projeto" width="200"/>
+</p>
 
 ## 📖 Descrição
 Nesse projeto fizemos um aplicativo de bate-papo similar ao saudoso Bate-Papo UOL. Foram utilizadas as seguintes tecnologias: HTML, CSS, JavaScript e requisições axios.
