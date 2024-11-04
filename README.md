@@ -22,7 +22,9 @@ Para fazer uso do aplicativo o usuário deverá fazer login (informando um nome 
 Para desenvolver esse projeto foi preciso lançar mãos de uma API (Interface de Programação de Aplicações), a qual possibilita fazer requisições de envio e recebimento de mensagens em tempo real.
 
 ## 🚀 Instalação
-Baixe o repositório do projeto no github e execute em sua máquina.
+Baixe o repositório do projeto no github e execute em sua máquina. Ou se preferir, acesse o aplicativo online no link abaixo:
+
+💬 [**Acesse aqui**](https://fabianorsdantas.github.io/Bate_Papo_UOL/)
 
 ## 💻 Prévia
 <div style="display: flex; flex-wrap: wrap; justify-content: center;" >
@@ -31,4 +33,8 @@ Baixe o repositório do projeto no github e execute em sua máquina.
 <img src="./img/chat.png" style="margin: 10px">
 
 </div>
+
+$~$
+
+[🔝 De volta ao topo](#bate-papo-uol)
 
